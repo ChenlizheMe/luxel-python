@@ -12,6 +12,7 @@ class RenderLayer:
     def register(self, func, *args, **kwargs):
         """注册函数，使用 UUID 生成唯一标识，并返回 UID"""
         uid = str(uuid.uuid4())  # 生成 UUID
+        self.results[uid] = None
         self.draw_list[uid] = (func, args, kwargs)
         return uid  # 返回 UID 以便后续移除
 

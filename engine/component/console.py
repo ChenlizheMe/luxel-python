@@ -8,9 +8,11 @@
         if not parts:
             return
 
-        command = parts[0]  # 提取命令部分
-        if command == "setbackground":
+        command = parts[0].lower()  # 提取命令部分
+        if command in {
+            "setbackground", "setcamerapos", "setcameralookat"
+        }:
             if len(parts) == 4:
-                self.event_mgr.add_event(command, parts[0], parts[1], parts[2])
+                self.event_mgr.add_event(command, float(parts[1]), float(parts[2]), float(parts[3]))
         if command == "exit":
             self.event_mgr.add_event(command)

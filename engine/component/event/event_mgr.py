@@ -17,6 +17,8 @@ class EventMgr:
         self.event_map = {
             'exit': self.event_group['engine'].exit,
             'setbackground': self.event_group['scene'].set_background_color,
+            'setcamerapos': self.event_group['scene'].set_camera_position,
+            'setcameralookat': self.event_group['scene'].set_camera_lookat,
         }
 
     def add_event(self, event, *args):

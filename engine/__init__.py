@@ -18,7 +18,7 @@ class Engine:
         self.window = ti.ui.Window(name=name, res=size, fps_limit=fps_limit, pos=pos)
 
         # renderer
-        self.scene = Scene(self.window, size)
+        self.scene = Scene(self.window)
         self.gui = GUI(self.window)
 
         # core
