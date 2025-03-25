@@ -8,12 +8,13 @@ from engine.core.threads_pool import ThreadPool
 from engine.gui.gui import GUI
 from engine.scene.scene import Scene
 from engine.utils.log import Instance as log
+from engine.physics.mpm_solver import MPMSolver
 
-ti.init(arch=ti.vulkan)
+ti.init(arch=ti.cuda, device_memory_GB=4.0)
 
 
 class Engine:
-    def __init__(self, name="SceneManager", size=(512, 512), fps_limit=60, pos=(512, 512)):
+    def __init__(self, name="SceneManager", size=(512, 512), fps_limit=6000, pos=(512, 512)):
         import engine.utils.cleanup
         self.window = ti.ui.Window(name=name, res=size, fps_limit=fps_limit, pos=pos)
 
@@ -60,6 +61,9 @@ class Engine:
     def user_console(self):
         self.console_mgr.active()
         return self.window.running
+
+    def add_event(self, event, *args):
+        self.event_mgr.add_event(event, *args)
 
     def event_process(self):
         self.event_mgr.active()
