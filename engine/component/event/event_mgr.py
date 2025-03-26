@@ -19,6 +19,7 @@ class EventMgr:
             'setbackground': self.event_group['scene'].set_background_color,
             'setcamerapos': self.event_group['scene'].set_camera_position,
             'setcameralookat': self.event_group['scene'].set_camera_lookat,
+            'addcube': self.event_group['scene'].add_cube,
         }
 
     def add_event(self, event, *args):
